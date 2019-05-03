@@ -19,15 +19,21 @@ export const drawCreature = (p, x, y, creature, sizeX, sizeY, padding) => {
     const jointEndX = (sizeX * jointEnd.position.x) / 100
     const jointEndY = (sizeY * jointEnd.position.y) / 100
 
-    p.stroke(255, 255, 255);
+    p.stroke(Math.ceil(muscle.strength * 255) , Math.ceil(muscle.strength * 255), Math.ceil(muscle.strength * 255));
+    const strokeWeight = (sizeX * 5 ) / 100
+    p.strokeWeight(strokeWeight)
     p.line(origX + jointStartX, origY + jointStartY,  origX + jointEndX, origY + jointEndY)
   })
 
   p.stroke(0, 0, 0);
+  // Reset
+  p.strokeWeight(1)
 
   creature.joints.forEach(joint => {
     const jointX = (sizeX * joint.position.x) / 100
     const jointY = (sizeY * joint.position.y) / 100
-    p.circle(origX + jointX, origY + jointY, 5)
+    p.fill(Math.ceil(joint.friction * 255), Math.ceil(joint.friction * 255), Math.ceil(joint.friction * 255))
+    p.circle(origX + jointX, origY + jointY, (sizeX * 5)/ 100)
   })
+
 }

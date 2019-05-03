@@ -7,12 +7,19 @@ import * as screenCreatureDetail from '../lib/screenCreatureDetail'
 class CreatureCreator extends React.Component {
   sketch = null
   componentDidMount() {
-    screenCreateCreatures.onDetail(this.changeToCreatureDetail.bind(this))
+    screenCreateCreatures.onClick(this.changeToCreatureDetail.bind(this))
+    screenCreatureDetail.onClick(this.changeToCreaturesList.bind(this))
+
+    // First screen
     this.sketch = canvas.init('canvas', screenCreateCreatures)
   }
   changeToCreatureDetail(creature) {
     this.sketch.remove()
     this.sketch = canvas.init('canvas', screenCreatureDetail.forCreature(creature))
+  }
+  changeToCreaturesList() {
+    this.sketch.remove()
+    this.sketch = canvas.init('canvas', screenCreateCreatures)
   }
   render() {
     return (

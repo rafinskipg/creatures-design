@@ -48,7 +48,7 @@ export const mouseClicked = (p ) => {
   }
 }
 
-export const onDetail = (cb) => {
+export const onClick = (cb) => {
   cbClick = cb
 }
 
@@ -61,7 +61,9 @@ export const render = (p) => {
       const y = i * sizeColRow
       //p.translate(0,0)
       drawCreature(p, x, y, creatures[index], 30, 30, 10)
-
+      // Reset
+      p.fill(134, 134, 134) 
+      
       if (creatures[index].highlighted) {
         p.stroke(55, 55, 55);
         p.square(x, y, 40)

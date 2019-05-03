@@ -9,7 +9,10 @@ export const createRandomCreature = () => {
   const joints = []
   
   for (let i = 0; i < amountOfJoints; i++) {
-    joints.push(new Joint())
+    const j = new Joint()
+    const friction = random.float(0, 1)
+    j.setFriction(friction)
+    joints.push(j)
   }
 
   const muscles = []
@@ -38,6 +41,8 @@ export const createRandomCreature = () => {
   // Connect the joints with muscles
   for (let i = 0; i < amountOfMuscles; i++) {
     const muscle = new Muscle()
+    const strength = random.float(0, 1)
+    muscle.setStrength(strength)
     const jointsForMuscle = [getItem(), getItem()]
     
     muscle.connectStart(joints[jointsForMuscle[0]])
