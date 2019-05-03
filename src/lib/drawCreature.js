@@ -1,12 +1,14 @@
-
-export const drawCreature = (p, x, y, creature, sizeX, sizeY, padding) => {
+export const drawSquareAround = (p, x, y, creature, sizeX, sizeY, padding ) => {
   p.fill(255, 204, 100);
   if (creature.hasProblem) {
     p.fill(155, 155, 100);
   }
   p.rect(x, y, sizeX + padding, sizeY + padding)
   p.fill(255, 204, 0);
+}
 
+export const drawCreature = (p, x, y, creature, sizeX, sizeY, padding) => {
+  
   const origX = x + padding /2
   const origY = y  + padding /2
 
@@ -19,11 +21,15 @@ export const drawCreature = (p, x, y, creature, sizeX, sizeY, padding) => {
     const jointEndX = (sizeX * jointEnd.position.x) / 100
     const jointEndY = (sizeY * jointEnd.position.y) / 100
 
-    p.stroke(Math.ceil(muscle.strength * 255) , Math.ceil(muscle.strength * 255), Math.ceil(muscle.strength * 255));
+    const color = muscle.velocity.x > 0 ? 100 : 50
+    p.stroke(Math.ceil(muscle.strength * 255) , color, Math.ceil(muscle.strength * 255));
     const strokeWeight = (sizeX * 5 ) / 100
     p.strokeWeight(strokeWeight)
     p.line(origX + jointStartX, origY + jointStartY,  origX + jointEndX, origY + jointEndY)
   })
+
+  p.strokeWeight(1)
+  p.text(creature.muscles[0].extension.x , origX, origY )
 
   p.stroke(0, 0, 0);
   // Reset

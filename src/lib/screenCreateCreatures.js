@@ -1,6 +1,6 @@
 
 import { createRandomCreature } from './createCreatures'
-import { drawCreature } from './drawCreature'
+import { drawCreature, drawSquareAround } from './drawCreature'
 
 let creatures = []
 let cbClick = () => {}
@@ -60,6 +60,7 @@ export const render = (p) => {
       const x = j * sizeColRow 
       const y = i * sizeColRow
       //p.translate(0,0)
+      drawSquareAround(p, x, y, creatures[index], 30, 30, 10)
       drawCreature(p, x, y, creatures[index], 30, 30, 10)
       // Reset
       p.fill(134, 134, 134) 

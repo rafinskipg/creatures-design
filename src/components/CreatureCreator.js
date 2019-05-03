@@ -1,7 +1,7 @@
 import React from 'react';
 import * as canvas from '../lib/launchCanvas'
 import * as screenCreateCreatures from '../lib/screenCreateCreatures'
-import * as screenCreatureDetail from '../lib/screenCreatureDetail'
+import * as screenCreatureDetail from '../lib/screenCreatureInEnvironment'
 
 
 class CreatureCreator extends React.Component {
