@@ -59,8 +59,8 @@ export const createRandomCreature = () => {
     muscle.connectStart(joints[jointsForMuscle[0]])
     muscle.connectEnd(joints[jointsForMuscle[1]])
 
-    muscle.calculateLength()
-    
+    muscle.setInitialLength()
+
     muscles.push(muscle)
   }
 

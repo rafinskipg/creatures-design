@@ -38,7 +38,7 @@ const highlightCreature = (index) => {
 
 export const mouseMoved = (p) => {
   const index = getCreatureIndexByMouse(p)
-  highlightCreature(index)
+  // highlightCreature(index)
 }
 
 export const mouseClicked = (p ) => {

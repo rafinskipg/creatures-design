@@ -21,7 +21,7 @@ export const drawCreature = (p, x, y, creature, sizeX, sizeY, padding) => {
     const jointEndX = (sizeX * jointEnd.position.x) / 100
     const jointEndY = (sizeY * jointEnd.position.y) / 100
 
-    const color = muscle.velocity.x > 0 ? 100 : 50
+    const color = muscle.acceleration.x > 0 ? 100 : 50
     p.stroke(Math.ceil(muscle.strength * 255) , color, Math.ceil(muscle.strength * 255));
     const strokeWeight = (sizeX * 5 ) / 100
     p.strokeWeight(strokeWeight)
