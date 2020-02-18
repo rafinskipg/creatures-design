@@ -35,12 +35,13 @@ export default class Muscle {
   }
 
   setInitialLength() {
-    this.maxLength = this.calculateLength()
-    this.minLength = this.maxLength / 10
+    const length = this.calculateLength()
+    this.maxLength = 0.7 * length
+    this.minLength = length / 10
   }
 
   calculateLength() {
-    return p5.Vector.sub(this.start.position, this.end.position).mag()
+    return p5.Vector.dist(this.start.position, this.end.position)
   }
 
   contract() {
@@ -57,9 +58,12 @@ export default class Muscle {
     this.velocity.add(this.acceleration)
     this.extension.add(this.velocity)
 
-    if (this.extension.x <= this.minLength) {
+    const length = this.calculateLength() 
+    // cosnst length = this.extension.x
+    console.log(length, this.minLength, this.maxLength)
+    if ( length <= this.minLength) {
       this.extend()
-    } else if (this.extension.x >= this.maxLength) {
+    } else if (length  >= this.maxLength) {
       this.contract()
     }
     this.applyForcesToJoints()
@@ -95,7 +99,7 @@ export default class Muscle {
     // distance = constrain(distance, 5, 25);
     // Normalize vector (distance doesn't matter here, we just want this vector for direction)
     force.normalize()
-    force.limit(0.02)
+
     // Calculate gravitional force magnitude
     //var strength = (this.G * this.mass * m.mass) / (distance * distance);
     // Get force vector --> magnitude * direction
@@ -111,6 +115,14 @@ export default class Muscle {
 
     const force = this.getForce2Start()
     const forceEnd = this.getForce2End()
+    // this.start.applyMuscleForce(force)
+    // this.end.applyMuscleForce(forceEnd)
+
+    // const length = this.calculateLength()
+
+    // if (length > this.maxLength) {
+
+    // }
 
     this.start.applyMuscleForce(
       force,

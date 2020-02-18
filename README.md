@@ -1,4 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Creatures Evolution
+
+This project tried to create an environment where random creatures could compete to see which one can evolve to the next generation.
+
+I just started with the environment and have some problems with the maths.. Sights!
+
+![](images/creatures.png)
 
 ## Available Scripts
 

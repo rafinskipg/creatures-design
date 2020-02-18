@@ -28,18 +28,22 @@ export default class Joint {
   }
 
   applyMuscleForce(force, otherPoint, maxDistance, minDistance) {
-    this.velocity.add(force)
+     let f = p5.Vector.div(force, this.mass)
+     this.acceleration.add(f)
+    
+    // this.velocity.add(force)
   
-    this.position.add(this.velocity)
-    const distance = p5.Vector.dist(this.position, otherPoint)
-    const lessThanMinimum =  distance <= minDistance
-    const moreThanMaximum = distance  >= maxDistance
-    if (lessThanMinimum || moreThanMaximum) {
-      console.log('avoid')
-      this.position.sub(this.velocity)
-      this.velocity.sub(force)
-    }
-
+    // // this.position.add(this.velocity)
+    //  const distance = p5.Vector.dist(this.position, otherPoint)
+    // const lessThanMinimum =  distance <= minDistance
+    // const moreThanMaximum = distance  >= maxDistance
+    // if (lessThanMinimum || moreThanMaximum) {
+    //   console.log('avoid')
+    //   // this.position.sub(this.velocity)
+    //   //force.rotate(Math.PI)
+    //   this.velocity.add(new p5.Vector(f.x * -0.8 , f.y * -0.8))
+    // }
+    // this.acceleration.add(force)
   }
 
   update() {
